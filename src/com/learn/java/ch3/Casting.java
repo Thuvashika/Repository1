@@ -8,7 +8,7 @@ public class Casting {
 		System.out.println(a);
 		int c=1;
 		byte d=77;
-		d=(byte)c;//int to byte(incompatible type casting
+		d=(byte)c;//int to byte(incompatible type casting)
 		System.out.println(d);
 		int x=10;
 		float y=1;
@@ -23,6 +23,7 @@ public class Casting {
 		System.out.println(b1);
 		a1=(int)b1;//long to int
 		System.out.println(a1);
+		
 	}
 
 }
