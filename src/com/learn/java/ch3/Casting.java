@@ -1,6 +1,6 @@
 package com.learn.java.ch3;
 
-public class TypeCasting {
+public class Casting {
 	public static void main(String[] args) {
 		int a=1;
 		byte b=120;
@@ -23,10 +23,6 @@ public class TypeCasting {
 		System.out.println(b1);
 		a1=(int)b1;//long to int
 		System.out.println(a1);
-		
-		
-		
 	}
-	
 
 }
