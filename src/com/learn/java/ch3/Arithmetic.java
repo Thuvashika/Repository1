@@ -4,10 +4,10 @@ import java.util.Scanner;
 public class Arithmetic {
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
-		int a=sc.nextInt();
-		int b=sc.nextInt();
-		int c=sc.nextInt();
-		System.out.println("Product of 2 numbers="+a*b*c);///product of 3 numbers
+		double a=sc.nextInt();
+		double b=sc.nextInt();
+		double c=sc.nextInt();
+		System.out.println("Product of 3 numbers="+a*b*c);///product of 3 numbers
 		c=(a>b)?a-b:b-a;
 		System.out.println("Difference between 2 numbers="+c);
 		c=a;

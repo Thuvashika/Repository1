@@ -2,12 +2,12 @@ package com.learn.java.day7;
 import java.util.*;
 public class Palindrome {
 	public static void main(String[] args) {
-	    String Word,newWord;
+	    String word,newWord;
 	    Scanner sc=new Scanner(System.in);
 		System.out.print("Type the word: ");
-		Word=sc.nextLine();
-		int len=Word.length();
-		newWord=Word.toLowerCase();
+		word=sc.nextLine();
+		int len=word.length();
+		newWord=word.toLowerCase();
 		String rev="";
 		for(int i=len-1;i>=0;i--){
 		    rev=rev+newWord.charAt(i);

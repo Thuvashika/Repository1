@@ -7,27 +7,27 @@ public class CuttOff {
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter the marks");		
 		System.out.print("Maths:");
-		int Maths=sc.nextInt();
+		int maths=sc.nextInt();
 		System.out.print("Biology:");
-		int Biology=sc.nextInt();
+		int biology=sc.nextInt();
 		System.out.print("Physics:");
-		int Physics=sc.nextInt();
+		int physics=sc.nextInt();
 		System.out.print("Chemistry:");
-		int Chemistry=sc.nextInt();
+		int chemistry=sc.nextInt();
 		System.out.print("BE Eligibility:");
-		int BECutOff=sc.nextInt();
+		int beCutOff=sc.nextInt();
 		System.out.print("MBBS Eligibility:");
-		int MBBSCutOff=sc.nextInt();
-		float BE=((Physics+Chemistry)/2)+Maths;
-		float MBBS=((Physics+Chemistry)/2)+Biology;
-		if(BE>=BECutOff && MBBS>=MBBSCutOff) {
+		int mbbsCutOff=sc.nextInt();
+		float be=((physics+chemistry)/2)+maths;
+		float mbbs=((physics+chemistry)/2)+biology;
+		if(be>=beCutOff && mbbs>=mbbsCutOff) {
 			System.out.print("You are eligible for both BE and MBBS");
 		}
-		else if(BE>=BECutOff) {
+		else if(be>=beCutOff) {
 			
 			System.out.print("You are eligible for BE");
 		}
-		else if(MBBS>=MBBSCutOff) {
+		else if(mbbs>=mbbsCutOff) {
 			System.out.print("You are eligible for MBBS");
 		}
 		else {

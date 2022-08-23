@@ -10,8 +10,8 @@ public class SimpleInterest {
 		System.out.print("Rate=");
 		float rate=sc.nextFloat();
 		System.out.print("No of days=");
-		float Days=sc.nextFloat();
-		float year=Days/365;
+		float days=sc.nextFloat();
+		float year=days/365;
 		float simpleInt=(principle*rate*year)/100;
 		System.out.println("Simple Interest= "+simpleInt);
 		System.out.println("Net Amount= "+(simpleInt+principle));

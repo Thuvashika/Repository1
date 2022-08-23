@@ -8,9 +8,9 @@ public class Calculator {
 		System.out.print("Enter your choice :");
 		char choice=sc.next().charAt(0);
 		System.out.print("First number :");
-		int num1=sc.nextInt();
+		double num1=sc.nextDouble();
 		System.out.print("Second number :");
-		int num2=sc.nextInt();
+		double num2=sc.nextDouble();
 		switch(choice){
 		case '+':
 			System.out.println("Addition of the numbers :"+(num1+num2));

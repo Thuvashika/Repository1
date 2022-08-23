@@ -8,26 +8,26 @@ public class GeoMetricalCalculations {
 		String shapes=shape.toLowerCase();
 		if(shapes.equals("triangle")) {
 			System.out.println("Base");
-			int base=sc.nextInt();
+			double base=sc.nextDouble();
 			System.out.println("length");
-			int length=sc.nextInt();
+			double length=sc.nextDouble();
 			System.out.println("Area of the trianle= "+(0.5)*length*base+" square units");
 		}
 		else if(shapes.equals("circle")) {
 			System.out.println("radius");
-			int radius=sc.nextInt();
+			double radius=sc.nextDouble();
 			System.out.println("Area of the circle= "+(2*3.14*radius*radius)+" square units");
 		}
 		else if(shapes.equals("rectangle")) {
 			System.out.println("Breadth");
-			int breadth=sc.nextInt();
+			double breadth=sc.nextDouble();
 			System.out.println("length");
-			int length=sc.nextInt();
+			double length=sc.nextDouble();
 			System.out.println("Area of the rectangle= "+(length*breadth)+" square units");
 		}
 		else if(shapes.equals("square")) {
 			System.out.println("length");
-			int length=sc.nextInt();
+			double  length=sc.nextDouble();
 			System.out.println("Area of the square= "+(length*length)+" square units");
 		}
 	}
