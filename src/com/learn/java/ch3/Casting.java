@@ -2,15 +2,15 @@ package com.learn.java.ch3;
 
 public class Casting {
 	public static void main(String[] args) {
-		int a=1;
+		/**int a=1;
 		byte b=120;
 		a=b;//byte to int
-		System.out.println(a);
-		int c=1;
+		System.out.println(a);**/
+		int c=128;
 		byte d=77;
 		d=(byte)c;//int to byte(incompatible type casting)
 		System.out.println(d);
-		int x=10;
+		/**int x=10;
 		float y=1;
 		y=x;//int to float
 		System.out.println(y);
@@ -22,7 +22,7 @@ public class Casting {
 		b1=a1;//int to long
 		System.out.println(b1);
 		a1=(int)b1;//long to int
-		System.out.println(a1);
+		System.out.println(a1);**/
 		
 	}
 
