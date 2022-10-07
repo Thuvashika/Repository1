@@ -1,4 +1,4 @@
-package com.learn.java.self;
+package learn.java.self;
 class GreatGrand{
 	static int a=10;
 	static {
