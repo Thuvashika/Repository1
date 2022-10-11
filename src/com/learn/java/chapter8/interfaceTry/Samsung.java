@@ -1,17 +1,11 @@
 package com.learn.java.chapter8.interfaceTry;
 
-public class Samsung implements Mobile {
+public class Samsung extends SuperSamsung implements Mobile,NewInterface {
 
-	@Override
-	public int sum(int... arr) {
-		int sum=0;
-		for(int a:arr) {
-			sum+=a;
-		}
-		return sum;
-		
-	}
-
+	
+	//public int sum(int... arr) no need to override if its parent class has this method
+	
+	
 	@Override
 	public int pro(int... arr) {
 		int pro=1;
@@ -31,5 +25,17 @@ public class Samsung implements Mobile {
 		System.out.println("keys");
 		
 	}
+	
+	//static methods of interface can also be implemented as non static method
+	public int add(int a,int b) {
+		return a+b;
+	}
 
+	public int sub(int a,int b) {  //we can also override default method
+		System.out.println("Samsung sub method");
+		return a-b;
+		
+	}
+
+	
 }

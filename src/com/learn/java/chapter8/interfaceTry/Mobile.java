@@ -31,7 +31,6 @@ public interface Mobile extends Calculator{
 		    root4=3;
 		}**/
 		
-		
 		System.out.println(pi);
 		System.out.println(var);
 		System.out.println(Area);

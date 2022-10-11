@@ -1,7 +1,8 @@
 package com.learn.java.chapter7.finalkeyword;
 
 public class FinalClass {
-
+ 
+	//overloading of final methods are possible
 	final void print(int a) {
 		System.out.println(a);
 	}
