@@ -1,0 +1,56 @@
+package com.learn.java.ch3;
+import java.text.SimpleDateFormat;
+import java.util.*;
+public class Person {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.print("Name:");
+		String name=sc.nextLine();
+		System.out.print("Gender:");
+		String gender=sc.nextLine();
+		System.out.print("DOB:");
+		SimpleDateFormat dob=new SimpleDateFormat("dd/MM/yyyy");
+		sc.nextLine();
+		System.out.print("age:");
+		int age=sc.nextInt();
+		sc.nextLine();
+		System.out.print("MaritalStatus:");
+		String maritalStatus=sc.nextLine();
+		System.out.print("DoorNo:");
+		int doorNo=sc.nextInt();
+		sc.nextLine();
+		System.out.print("Street:");
+		String street=sc.nextLine();
+		System.out.print("Locality:");
+		String locality=sc.nextLine();
+		System.out.print("City:");
+		String city=sc.nextLine();
+		System.out.print("State:");
+		String state=sc.nextLine();
+		System.out.print("Country:");
+		String country=sc.nextLine();
+		System.out.print("pincode:");
+		long pincode=sc.nextLong();
+		sc.nextLine();
+		System.out.print("IsAadharAvailable:");
+		String isAadharAvailable=sc.nextLine();
+		System.out.print("IsTelephoneAvailable:");
+		String isTelephoneAvailable=sc.nextLine();
+		System.out.print("PhoneNumber:");
+		long phoneNumber=sc.nextLong();
+		sc.nextLine();
+		System.out.print("Qualification:");
+		String qualification=sc.nextLine();
+		System.out.print("IsSalaried:");
+		String isSalaried=sc.nextLine();
+		System.out.print("MonthlySalary:");
+		long monthlySalary=sc.nextLong();
+		sc.nextLine();
+		System.out.print("MonthlyExpenses:");
+		long monthlyExpenses=sc.nextLong();
+		sc.nextLine();
+		System.out.print("Hobbies:");
+		String hobbies=sc.nextLine();
+		System.out.print("Name:"+name+"\n"+"Gender:"+gender+"\n"+"age:"+age+"\n"+"MaritalStatus:"+maritalStatus+"\n"+"Address:"+doorNo+","+street+","+locality+","+city+","+state+","+country+","+pincode+"\n"+"IsAadharAvailable:"+isAadharAvailable+"\n"+"IsTelephoneAvailable:"+isTelephoneAvailable+"\n"+"PhoneNumber:"+phoneNumber+"\n"+"Qualification:"+qualification+"\n"+"IsSalaried:"+isSalaried+"\n"+"MonthlySalary:"+monthlySalary+"\n"+"MonthlyExpenses:"+monthlyExpenses+"\n"+"Hobbies:"+hobbies);
+	}
+}
