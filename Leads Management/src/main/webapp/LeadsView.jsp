@@ -155,8 +155,7 @@ function displayCD(start) {
 	let end=newi+5;
 	console.log(newi)
 	if(end>len){
-		end=len
-		//console.log(end);
+		end=len;
 	}
 	for (let i=newi; i < end; i++) { 
 	    table += "<tr><td>" +
