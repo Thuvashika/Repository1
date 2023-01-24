@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sign up</title>
+<link rel="stylesheet" href="/Leads_Management/css/entry.css">
+</head>
+<body>
+ <div class="center">
+      <h1>Sign in</h1>
+      <form action="signup" method="post">
+        <div class="txt_field">
+          <input type="text" pattern="[A-Za-z]{2,15}" required name="name">
+          <span></span>
+          <label>Name</label>
+        </div>
+        <div class="txt_field">
+          <input type="email" required name="email">
+          <span></span>
+          <label>Email Id</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" required name="password">
+          <span></span>
+          <label>Set Password</label>
+        </div>
+          <input type="submit" value="Create New Account">
+         </form>
+    </div>
+</body>
+</html>
