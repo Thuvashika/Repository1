@@ -12,16 +12,46 @@ body{
   background: linear-gradient(120deg,#2980b9, #8e44ad);
   height: 100vh;
 }
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+  background-color: black;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.center{
+  position: fixed;
+  left: 40%;
+}
 .myDiv {
 	height:60px;
-    background:linear-gradient(120deg,#2980b9, #8e44ad);    
     text-align: center;
  }
+ .fixTableHead {
+      overflow-y: auto;
+      height: 110px;
+ }
+ .fixTableHead thead th {
+	position: sticky;
+    top: 0;
+}
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
-  }
+}
   td, th{
   border: 1px solid #dddddd;
   text-align: left;
@@ -34,8 +64,8 @@ table {
   .form-popup {
   display: none;
   position: fixed;
-  bottom: 100;
-  right: 500;
+  top:0;
+  right: 600;
   border: 3px solid #f1f1f1;
   z-index: 9;
 }
@@ -62,7 +92,7 @@ table {
 
 /* Set a style for the submit/login button */
 .form-container .btn {
-  background-color: #04AA6D;
+  background-color:#2691d9;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -74,7 +104,7 @@ table {
 
 /* Add a red background color to the cancel button */
 .form-container .cancel {
-  background-color: red;
+  background-color:black;
 }
 
   .button{

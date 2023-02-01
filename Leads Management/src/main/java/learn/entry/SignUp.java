@@ -20,14 +20,13 @@ public class SignUp extends HttpServlet {
 			String password=request.getParameter("password");
 			User obj=new User(name,email, password);
 			if(controlObj.isUserExist(email)) {
-				session.setAttribute("error","user already exist");
-				response.sendRedirect("login.jsp");
+				request.setAttribute("error","user already exist");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
 			else {
-				session.removeAttribute("error");
 				controlObj.insertUser(obj);
 				controlObj.setId(obj);
-				session.setAttribute("obj",obj);
+				session.setAttribute("Id",obj.getId());
 				response.sendRedirect("LeadsView.jsp");
 			}
 	}

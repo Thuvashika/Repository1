@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>All leads</title>
 <link rel="stylesheet" href="/Leads_Management/css/view.css">
+<script src="jquery/jquery-3.6.3.js"></script>
 <script src="js/leadsView.js"> </script>
 </head>
 <body>
@@ -25,12 +26,21 @@ margin-left: auto;  ;size:8;width=90%">
 			<button class="button" onclick="window.location.href='/Leads_Management/LeadsView.jsp'" >My Leads</button>
 			<br>
 			<br>
-			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+			<select name="search" id="select">
+  			<option value="name">Search for names:</option>
+  			<option value="userid">Search for user Id:</option>
+  			<option value="id">Search for id:</option>
+    		<option value="email">Search for Email</option>
+   			<option value="region">Search for Region</option>
+    		<option value="contact">Search for Contact</option>
+  			</select>
+			<input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search..." title="Type in ">
 			<br>
 			<div style="background: white;">
 			<table id="myTable">
-				<thead>
-					<tr>
+				<thead style="background:#2691d9;">
+					<tr style="color:White">
+						<th>USER ID</th>
 						<th>ID</th>
 						<th>Name</th>
 						<th>Email</th>
@@ -38,30 +48,20 @@ margin-left: auto;  ;size:8;width=90%">
 						<th>Contact</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="tableBody"></tbody>
 				<%
-					 User UserObj=(User)session.getAttribute("obj");
-					if(UserObj==null){
-						session.setAttribute("error","Don't have permission to view this page");
-						response.sendRedirect("login.jsp");
-					}
-					else{
-						LeadsControl obj=new LeadsControl();
-						LinkedList<Lead> listOfLeads=obj.selectAllLeads();
-						for(Lead ele:listOfLeads){
-						%>
-					<tr>
-					<td><%=ele.getId()%></td>
-        			<td> <%=ele.getName()%></td>
-        			<td><%=ele.getEmail()%> </td>
-       				<td> <%=ele.getRegion()%></td>
-       			 	<td><%=ele.getContact()%> </td>
-      			 		<%       
-	  	 				}
-					}
- 				%>
+				if(session.getAttribute("Id")==null){
+					request.setAttribute("error","Don't have permission to view this page");
+					request.getRequestDispatcher("login.jsp").forward(request, response);
+				}
+				%>
 			</tbody>
 			</table> 
 			</div>
 </body>
+<script>
+window.onload=function(){
+	defaultPage();
+}
+</script>
 </html>

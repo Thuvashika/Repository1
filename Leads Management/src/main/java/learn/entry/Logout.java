@@ -16,7 +16,7 @@ public class Logout extends HttpServlet {
 
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
-		session.removeAttribute("obj");
+		session.removeAttribute("Id");
 		RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
 		rd.forward(request, response);
 	}

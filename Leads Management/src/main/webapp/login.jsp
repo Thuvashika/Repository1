@@ -21,8 +21,8 @@
           <span></span>
           <label>Password</label>
         </div>
-        <%String error= (String)session.getAttribute("error");
-      if(session.getAttribute("error")!=null){
+        <%String error= (String)request.getAttribute("error");
+      if(request.getAttribute("error")!=null){
     	 %>
     	 <div id='error' style="color:red;text-align: center;">
     	 <%= error %>

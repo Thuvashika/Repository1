@@ -8,7 +8,7 @@
 <title>LEADS</title>
 
  <link rel="stylesheet" href="/Leads_Management/css/view.css">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+ <script src="jquery/jquery-3.6.3.js"></script>
  <script src="js/leadsView.js"> </script>
 </head>
 <body>
@@ -26,47 +26,56 @@ margin-left: auto;  ;size:8;width=90%">
 			</form>
 			<button class="button" onclick="openForm()" >Add New Lead</button>
 			<button class="button" onclick="window.location.href ='/Leads_Management/AllLeadsView.jsp'" >All leads</button>
+			<div class="center" style="position:fixed" >
+			<label for="no"><b>Leads per page</b></label>
+   			<input style="text-align:center" type="text" pattern="[0-9]{2}" value=5 onkeyup="pagination()" name="no" id="no" required>
+   			</div>
 			<br>
 			<br>
-			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-			<input type="button" onclick="previous()" value="<<">
-			<input type="button" onclick="next()" value=">>">
+  			<select name="search" id="select">
+  			<option value="name">Search for names:</option>
+  			<option value="id">Search for id:</option>
+    		<option value="email">Search for Email</option>
+   			<option value="region">Search for Region</option>
+    		<option value="contact">Search for Contact</option>
+  			</select>
+			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search..." title="Type in ">
+			
 			<div class="form-popup" id="myForm">
 			<form action="ViewControl" class="form-container">
     		<h1>Add new Lead</h1>
     		<label for="name"><b>Name</b></label>
-   			<input type="text" 
+   			<input id="addName" type="text" 
    			pattern="[A-Za-z]{2,15}"  
    			placeholder="Enter Name" 
    			name="name" required
    			oninvalid="this.setCustomValidity('Only words with 2 to 15 alphabets are allowed')"
    			onchange="try{setCustomValidity('')}catch(e){}">
     		<label for="email"><b>Email</b></label>
-   			<input type="email" placeholder="Enter Email" name="email" required>
+   			<input id="addEmail" type="email" placeholder="Enter Email" name="email" required>
     		<label for="region"><b>Region</b></label>
-    		<input type="text" pattern="[A-Za-z]{2,15}" placeholder="Enter region" name="region" required
+    		<input id="addRegion" type="text" pattern="[A-Za-z]{2,15}" placeholder="Enter region" name="region" required
     		oninvalid="this.setCustomValidity('Only words with 2 to 15 alphabets are allowed')"
    			onchange="try{setCustomValidity('')}catch(e){}">
     		<label for="contact"><b>contact</b></label>
-   			<input type="tel" pattern="[0-9]{10}" placeholder="Enter Phone no" name="contact" required
+   			<input id="addContact" type="tel" pattern="[0-9]{10}" placeholder="Enter Phone no" name="contact" required
    			oninvalid="this.setCustomValidity('Enter correct phone number')"
    			onchange="try{setCustomValidity('')}catch(e){}">
-    		<button type="submit" class="btn">Add lead</button>
-    		<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    		<button id="add" type="submit" class="btn" onclick="addLead()">Add lead</button>
+    		<button id="close1" type="button" class="btn cancel" onclick="closeForm()">Close</button>
     		</form>
     		</div>
-			</div>
+    		</div>
 			<%
-					 User UserObj=(User)session.getAttribute("obj");
-					if(UserObj==null){
-						session.setAttribute("error","Don't have permission to view this page");
-						response.sendRedirect("login.jsp");
+					if(session.getAttribute("Id")==null){
+						request.setAttribute("error","Don't have permission to view this page");
+						request.getRequestDispatcher("login.jsp").forward(request, response);
 					}
-					%>
+			%>
 			<div style="background: white;">
-			<table id="myTable">
-				<thead>
-					<tr>
+			<table id="myTable" class="fixTableHead">
+				<thead style="background:#2691d9;">
+					<tr style="color:White">
 						<th>ID</th>
 						<th>Name</th>
 						<th>Email</th>
@@ -75,30 +84,24 @@ margin-left: auto;  ;size:8;width=90%">
 						<th>Action</th>
 					</tr>
 				</thead>
-				<tbody>
-				<%
-				LeadsControl obj=new LeadsControl();
-				LinkedList<Lead> listOfLeads=obj.selectAllLeads();
-				for(Lead ele:listOfLeads){
-						%>
-					<tr>
-					<td><%=ele.getId()%></td>
-        			<td> <%=ele.getName()%></td>
-        			<td><%=ele.getEmail()%> </td>
-       				<td> <%=ele.getRegion()%></td>
-       			 	<td><%=ele.getContact()%> </td>
-       			 	<td><button class="button" onclick= "openEditForm(this)" >Edit</button>
-       			 	<button class="button" onclick= "deleteRow(this)" >Delete</button><div class="form-popup" id="deleteForm">
-       			 		<form action="DeleteControl" class="form-container" method= "delete" >
+				<tbody id="tableBody"></tbody>
+			</table> 
+			</div>
+			<div class="center">
+			<input type=button id="page1" style="align-items: center" class="button" onclick="previous()" value="<<">
+			<input type=button id="page2" style="align-items: center" class="button" type="button" onclick="next()" value=">>">
+			</div>
+			<div class="form-popup" id="deleteForm">
+			<form action="DeleteControl" class="form-container" method= "delete" >
        			 		<h1 style="text-align: center">Delete Lead</h1>
        			 		<h2>Lead Id:</h2>
        			 		<input class=button type="text" value=""  name="id" id=deleteRowId readonly>
-       			 		<button type="submit" class="btn">Delete</button>
-    					<button type="button" class="btn cancel" onclick="closeDeleteForm()">Close</button>
+       			 		<button id="delete" type="submit" class="btn">Delete</button>
+    					<button id="close3" type="button" class="btn cancel" onclick="closeDeleteForm()">Close</button>
 						</form>
 						</div>
        			 		<div class="form-popup" id="newForm">
-						<form action="EditControl" onclick="toggle()"  class="form-container">
+						<form action="EditControl" class="form-container">
     					<h1>Update Lead</h1>
     					<label for="id"><b>ID</b></label>
    						<input type="text" value=" " name="id" required id="ID">
@@ -116,74 +119,14 @@ margin-left: auto;  ;size:8;width=90%">
    						<input type="tel" pattern="[0-9]{10}" name="contact" required id="Contact"
    						oninvalid="this.setCustomValidity('Enter correct phone number')"
    			onchange="try{setCustomValidity('')}catch(e){}">
-    					<button type="submit" class="btn">Update</button>
-    					<button type="button" class="btn cancel" onclick="closeEditForm()">Close</button>
-						</form>
-    					</div></td>
-    					<%       
-	  	 				}
- 				%>
-      			 	</tr>
-			</tbody>
-			</table> 
-			</div>
-			<script>
-	let len="<%= listOfLeads.size()%>";
-	 var mat = new Array(len);
-	 for (var i = 0; i < len; i++) {
-	    mat[i] = new Array(5);
-	 }   
-	<%int len=listOfLeads.size();
-	for (int i=0; i<len; i++) { %>
-    mat[<%= i %>][0] = "<%= listOfLeads.get(i).getId() %>";
-    mat[<%= i %>][1] = "<%= listOfLeads.get(i).getName() %>";
-    mat[<%= i %>][2] = "<%= listOfLeads.get(i).getEmail() %>";
-    mat[<%= i %>][3] = "<%= listOfLeads.get(i).getRegion() %>";
-    mat[<%= i %>][4] = "<%= listOfLeads.get(i).getContact() %>";
-<% } %>
-$(document).ready(function(){
-	const xhttp = new XMLHttpRequest();
-	xhttp.onload = function() {
-	  displayCD(start);
-	}
-});
-let start=0;
-let page=Math.floor(len/5)+1;
-function displayCD(start) {
-	let table="<tr><th>ID</th><th>Name</th><th>Email</th><th>Region</th><th>Contact</th></tr>";
-	let newi=(start)*5;
-	let end=newi+5;
-	console.log(newi)
-	if(end>len){
-		end=len;
-	}
-	for (let i=newi; i < end; i++) { 
-	    table += "<tr><td>" +
-	    mat[i][0]+"</td><td>" +
-	    mat[i][1]+
-	    "</td><td>" +
-	    mat[i][2]+
-	    "</td><td>" +
-	    mat[i][3]+
-	    "</td><td>" +
-	    mat[i][4]+
-	    "</td><td>" ;
-	  }
-	document.getElementById("myTable").innerHTML = table;
-}
+    					<button id="update" type="submit" class="btn">Update</button>
+    					<button id="close2" type="button" class="btn cancel" onclick="closeEditForm()">Close</button>
+						</form>  
+						</div>
+			<script>			
+window.onload=function(){
+	pagination();
 
-function next() {
-  if (start < page) {
-	  start++;
-      displayCD(start);
-  }
-}
-
-function previous() {
-  if (start >0) {
-	  start--;
-      displayCD(start);
-  }
 }
 </script>
 			

@@ -19,21 +19,20 @@ public class Login extends HttpServlet {
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		if(controlObj.isUserExist(email)) {
-			User obj=controlObj.selectUserByEmail(email);
-			session.setAttribute("obj",obj);
-			String actualPassword=obj.getPassword();
+			int userId=controlObj.selectUserByEmail(email);
+			session.setAttribute("Id",userId);
+			String actualPassword=controlObj.getPassword(userId);
 			if(!(actualPassword.equals(password))) {
-				session.setAttribute("error","password mismatch");
-				response.sendRedirect("login.jsp");
+				request.setAttribute("error","password mismatch");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
 			else{
-				session.removeAttribute("error");
 				response.sendRedirect("LeadsView.jsp");
 			}
 		}
 		else {
-			session.setAttribute("error","user does'nt exist");
-			response.sendRedirect("login.jsp");
+			request.setAttribute("error","user does'nt exist");
+			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 }
 

@@ -12,7 +12,8 @@ public class UserControl {
 	private String userName="root";
 	private String passWord="Thuva@2001";
 	private static final String INSERT_USER="INSERT INTO leads.users_information" + " (username,email,password) VALUES "+ " (?,?,?);"; 
-	private static final String SELECT_USER_BY_EMAIL="select userid,username,password from leads.users_information where email=?";
+	private static final String SELECT_USER_BY_EMAIL="select userid  from leads.users_information where email=?";
+	private static final String GET_PASSWORD="select password  from leads.users_information where userid=?";
 	private static final String GET_ID="select userIid from leads.users_information where email=?";
 	protected Connection getConnection(){
 		Connection connection=null;
@@ -45,6 +46,23 @@ public class UserControl {
 		
 		
 	}
+	public String getPassword(int id) {
+		String pass=null;
+		try(Connection connection = getConnection();
+			PreparedStatement preparedStatement=connection.prepareStatement(GET_PASSWORD);){
+			preparedStatement.setInt(1, id);
+			ResultSet rs=preparedStatement.executeQuery();
+			while(rs.next()) {
+				pass=rs.getString("password");
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pass;
+		
+	}
 	public void setId(User user) {
 	
 		try(Connection connection = getConnection();
@@ -64,25 +82,21 @@ public class UserControl {
 		
 		
 	}
-	public User selectUserByEmail(String email) {
-		User user=null;
+	public int selectUserByEmail(String email) {
+		int userId=0;
 		try(Connection connection = getConnection();
 			PreparedStatement preparedStatement=connection.prepareStatement(SELECT_USER_BY_EMAIL);){
 			preparedStatement.setString(1, email);
 			ResultSet rs=preparedStatement.executeQuery();
 			while(rs.next()) {
-				int id=rs.getInt("userid");
-				String name=rs.getString("username");
-				String password=rs.getString("password");
-				System.out.println(password);
-				user=new User(id,name,email,password);
+				userId =rs.getInt("userid");
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return user;
+		return userId;
 	}
 	public boolean isUserExist(String email) {
 		boolean status=false;
