@@ -12,6 +12,7 @@
  <script src="js/leadsView.js"> </script>
 </head>
 <body>
+<div id=body>
 	<div class="myDiv">
     <h1 style="color:White;font-family:verdana;">LEADS</h1>
     </div>
@@ -42,7 +43,7 @@ margin-left: auto;  ;size:8;width=90%">
 			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search..." title="Type in ">
 			
 			<div class="form-popup" id="myForm">
-			<form action="ViewControl" class="form-container">
+			<form action="javascript:addLead()" class="form-container">
     		<h1>Add new Lead</h1>
     		<label for="name"><b>Name</b></label>
    			<input id="addName" type="text" 
@@ -61,7 +62,7 @@ margin-left: auto;  ;size:8;width=90%">
    			<input id="addContact" type="tel" pattern="[0-9]{10}" placeholder="Enter Phone no" name="contact" required
    			oninvalid="this.setCustomValidity('Enter correct phone number')"
    			onchange="try{setCustomValidity('')}catch(e){}">
-    		<button id="add" type="submit" class="btn" onclick="addLead()">Add lead</button>
+    		<button id="add" type="submit" class="btn">Add lead</button>
     		<button id="close1" type="button" class="btn cancel" onclick="closeForm()">Close</button>
     		</form>
     		</div>
@@ -92,19 +93,19 @@ margin-left: auto;  ;size:8;width=90%">
 			<input type=button id="page2" style="align-items: center" class="button" type="button" onclick="next()" value=">>">
 			</div>
 			<div class="form-popup" id="deleteForm">
-			<form action="DeleteControl" class="form-container" method= "delete" >
+			<form action="javascript:deleteLead()" class="form-container" method= "delete" >
        			 		<h1 style="text-align: center">Delete Lead</h1>
        			 		<h2>Lead Id:</h2>
-       			 		<input class=button type="text" value=""  name="id" id=deleteRowId readonly>
+       			 		<input  class=button type="text" value=""  name="id" id=deleteRowId readonly>
        			 		<button id="delete" type="submit" class="btn">Delete</button>
     					<button id="close3" type="button" class="btn cancel" onclick="closeDeleteForm()">Close</button>
 						</form>
 						</div>
        			 		<div class="form-popup" id="newForm">
-						<form action="EditControl" class="form-container">
+						<form action="javascript:editLead()" class="form-container">
     					<h1>Update Lead</h1>
     					<label for="id"><b>ID</b></label>
-   						<input type="text" value=" " name="id" required id="ID">
+   						<input type="text" value=" " name="id" required id="ID" readonly>
     					<label for="name"><b>Name</b></label>
    						<input type="text" pattern="[A-Za-z]{2,15}" value="" name="name" required id="Name"
    						oninvalid="this.setCustomValidity('Only words with 2 to 15 alphabets are allowed')"
@@ -122,6 +123,7 @@ margin-left: auto;  ;size:8;width=90%">
     					<button id="update" type="submit" class="btn">Update</button>
     					<button id="close2" type="button" class="btn cancel" onclick="closeEditForm()">Close</button>
 						</form>  
+						</div>
 						</div>
 			<script>			
 window.onload=function(){

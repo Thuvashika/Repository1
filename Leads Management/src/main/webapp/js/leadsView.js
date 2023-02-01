@@ -3,6 +3,7 @@
  */
  let page=0;
  function pagination(){
+	var w = $(window);
 	var end1 = parseInt($('#no').val());
 	if(isNaN(end1)){
 		page=0;
@@ -167,17 +168,22 @@ function defaultPage(){
 });
 }
 function openForm() {
+	$("#body :input").prop("disabled", true);
 	$(':button').prop('disabled', true);
-	$("#add").attr("disabled", false);
+	$("#myForm :input").prop("disabled", false);
 	$("#close1").attr("disabled", false);
+	$("#add").attr("disabled", false);
   document.getElementById("myForm").style.display = "block";
 }
 function closeForm() {
+	$("#body :input").prop("disabled", false);
 	$(':button').prop('disabled', false);
   document.getElementById("myForm").style.display = "none";
 }  
 function openEditForm(td) {
+	$("#body :input").prop("disabled", true);
 	$(':button').prop('disabled', true);
+	$("#newForm :input").prop("disabled", false);
 	$("#update").attr("disabled", false);
 	$("#close2").attr("disabled", false);
 	let selectedRow=td.parentElement.parentElement;
@@ -189,10 +195,12 @@ function openEditForm(td) {
 	document.getElementById("newForm").style.display = "block";
 }
 function closeEditForm() {
+	$("#body :input").prop("disabled", false);
 	$(':button').prop('disabled', false);
   document.getElementById("newForm").style.display = "none";
 }
 function deleteRow(td) {
+	$("#body :input").prop("disabled", true);
 	$(':button').prop('disabled', true);
 	$("#delete").attr("disabled", false);
 	$("#close3").attr("disabled", false);
@@ -201,6 +209,7 @@ function deleteRow(td) {
 	document.getElementById("deleteForm").style.display = "block";
 }
 function closeDeleteForm() {
+	$("#body :input").prop("disabled", false);
 	$(':button').prop('disabled', false);
 	  document.getElementById("deleteForm").style.display = "none";
 }
@@ -250,6 +259,20 @@ function editLead(){
 			},
 			success : function() {
 				closeEditForm();
+				pagination();
+			}
+	});
+}
+function deleteLead(){
+	var id=parseInt($('#deleteRowId').val());
+	$.ajax({
+			type:'POST',
+			url : 'DeleteControl',
+			data : {
+				id:id,
+			},
+			success : function() {
+				closeDeleteForm();
 				pagination();
 			}
 	});

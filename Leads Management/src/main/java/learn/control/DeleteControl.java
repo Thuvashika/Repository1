@@ -16,7 +16,6 @@ public class DeleteControl extends HttpServlet{
 
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id=Integer.parseInt(request.getParameter("id"));
-		System.out.println(id);
 		LeadsControl controlObj=new LeadsControl();
 		try {
 			controlObj.deleteLead(id);
