@@ -20,8 +20,10 @@ public class AllLeads extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int start=Integer.parseInt(request.getParameter("start"));
+		int end=Integer.parseInt(request.getParameter("end"));
 		LeadsControl controlObj=new LeadsControl();
-		 LinkedList<Lead> list=controlObj.selectAllLeads();
+		 LinkedList<Lead> list=controlObj.selectAllLeads(start,end);
 		JSONObject obj = new JSONObject();
 		obj.put("list", list);
 		JSONArray jArray = obj.getJSONArray("list");

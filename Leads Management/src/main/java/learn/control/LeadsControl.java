@@ -21,7 +21,7 @@ public class LeadsControl {
 	private static final String SELECTALL_LEAD_BY_REGION="SELECT * FROM leads.leads_information where region like ?;";
 	private static final String SELECTALL_LEAD_BY_CONTACT="SELECT * FROM leads.leads_information where contact like ?;";
 	private static final String SELECTALL_LEAD_BY_USERID="SELECT * FROM leads.leads_information where userid like ?;";
-	private static final String SELECT_ALL_LEADS="SELECT * FROM leads.leads_information;";
+	private static final String SELECT_ALL_LEADS="SELECT * FROM leads.leads_information LIMIT  ?,?;";
 	private static final String DELETE_LEAD="delete from leads_information where id=?;";
 	private static final String UPDATE_LEAD="update leads_information set name=?,email=?,region=?,contact=? where id=?;";
 	protected Connection getConnection(){
@@ -97,10 +97,12 @@ public class LeadsControl {
 		}
 		return lead;
 	}
-	public LinkedList<Lead> selectAllLeads() {
+	public LinkedList<Lead> selectAllLeads(int start, int end) {
 		LinkedList<Lead> lead=new LinkedList<Lead>();
 		try(Connection connection = getConnection();
 			PreparedStatement preparedStatement=connection.prepareStatement(SELECT_ALL_LEADS);){
+			preparedStatement.setInt(1, start);
+			preparedStatement.setInt(2, end);
 			ResultSet rs=preparedStatement.executeQuery();
 			while(rs.next()) {
 				int userId=rs.getInt("userid");

@@ -3,7 +3,6 @@
  */
  let page=0;
  function pagination(){
-	var w = $(window);
 	var end1 = parseInt($('#no').val());
 	if(isNaN(end1)){
 		page=0;
@@ -11,6 +10,17 @@
 	}
 	if(end1>15){
 		end1=15;
+		$("#body :input").prop("disabled", true);
+	    $(':button').prop('disabled', true);
+	    $("#close").attr("disabled", false);
+		var box = $("#box"); 
+		box.show();
+        $("#close").click(function() { 
+         box.hide();
+         document.getElementById("no").value=end1;
+         $("#body :input").prop("disabled", false);
+	    $(':button').prop('disabled', false);
+      });
 	}
 	var start=page*end1;
 		$.ajax({
@@ -22,7 +32,7 @@
 			},
 			success : function(responseText) {
 				
-				var table='<table>';
+				var table='';
 				var products = $.parseJSON(responseText);
 				var len=products.length;
 				if(len==0){
@@ -42,7 +52,6 @@
 			    		"</td><td><button class="+"'button'"+"onclick="+"'openEditForm(this)'"+">Edit</button> "+
 			    		" <button id="+"'del'"+"class="+"'button'"+"onclick="+"'deleteRow(this)'"+">Delete</button></td></tr>";
 					}
-					table+='</table>';
 					document.getElementById("tableBody").innerHTML = table;
 				}
 		}	
@@ -100,73 +109,6 @@ function next() {
 			pagination();
 		}
 }			
-function searchFunction() {
-	var col = $('#select').val();
-	var str= $('#myInput').val();
-	if(!str==""){
-	$.ajax({
-			type:'GET',
-			url : 'searchFromAll',
-			data : {
-				word:str,
-				column:col
-			},
-			success : function(responseText) {
-				var table="";
-				var products = $.parseJSON(responseText);
-				var len=products.length;
-				for(var i = 0; i <len; i++) {
-					table += "<tr><td>" +
-					products[i].userId+"</td><td>" +
-					products[i].id+"</td><td>" +
-					products[i].name+
-			    	"</td><td>" +
-			    	products[i].email+
-			    	"</td><td>" +
-			    	products[i].region+
-			    	"</td><td>" +
-			    	products[i].contact+
-			    	"</td><td>";
-				}
-				document.getElementById("tableBody").innerHTML = table;
-			}
-		})
-	}
-	else{
-		defaultPage();
-	}
-}
-function defaultPage(){
-	$.ajax({
-		type:'GET',
-		url :'allLeads',
-		success : function(responseText) {
-			
-			var table="";
-			var products = $.parseJSON(responseText);
-			var len=products.length;
-			if(len==0){
-				page--;
-			}
-			else{
-				for(var i = 0; i < len; i++) {
-					table += "<tr><td>" +
-					products[i].userId+"</td><td>" +
-					products[i].id+"</td><td>" +
-					products[i].name+
-		    		"</td><td>" +
-		    		products[i].email+
-		    		"</td><td>" +
-		    		products[i].region+
-		    		"</td><td>" +
-		    		products[i].contact+
-		    		"</td></tr>";
-				}
-				document.getElementById("tableBody").innerHTML = table;
-			}
-	}	
-});
-}
 function openForm() {
 	$("#body :input").prop("disabled", true);
 	$(':button').prop('disabled', true);

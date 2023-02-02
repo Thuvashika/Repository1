@@ -10,9 +10,10 @@
 <title>All leads</title>
 <link rel="stylesheet" href="/Leads_Management/css/view.css">
 <script src="jquery/jquery-3.6.3.js"></script>
-<script src="js/leadsView.js"> </script>
+<script src="js/AllLeadsView.js"> </script>
 </head>
 <body>
+<div id="body">
 <div class="myDiv">
     <h1 style="color:White;font-family:verdana;">ALL LEADS</h1>
     </div>
@@ -20,10 +21,21 @@
 	<h2 style="font-family:courier;font-size:200%;text-align:center;">List of all leads</h2>
 	<hr style="width:50%;margin-right: auto;  
 margin-left: auto;  ;size:8;width=90%">
+                <%
+				if(session.getAttribute("Id")==null){
+					request.setAttribute("error","Don't have permission to view this page");
+					request.getRequestDispatcher("login.jsp").forward(request, response);
+				}
+				%>
+				<div>
 			<form action="logout" method="post">
 			<input style="float:right" class=button type="submit" value="Log out">
 			</form>
 			<button class="button" onclick="window.location.href='/Leads_Management/LeadsView.jsp'" >My Leads</button>
+			<div class="center">
+			<label for="no"><b>Leads per page</b></label>
+   			<input style="text-align:center" type="text" pattern="[0-9]{2}" value=5 onkeyup="pagination()" name="no" id="no" required>
+   			</div>
 			<br>
 			<br>
 			<select name="search" id="select">
@@ -35,11 +47,11 @@ margin-left: auto;  ;size:8;width=90%">
     		<option value="contact">Search for Contact</option>
   			</select>
 			<input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search..." title="Type in ">
-			<br>
-			<div style="background: white;">
+			</div>
+			<div class="fixTableHead">
 			<table id="myTable">
-				<thead style="background:#2691d9;">
-					<tr style="color:White">
+				<thead>
+					<tr>
 						<th>USER ID</th>
 						<th>ID</th>
 						<th>Name</th>
@@ -49,19 +61,23 @@ margin-left: auto;  ;size:8;width=90%">
 					</tr>
 				</thead>
 				<tbody id="tableBody"></tbody>
-				<%
-				if(session.getAttribute("Id")==null){
-					request.setAttribute("error","Don't have permission to view this page");
-					request.getRequestDispatcher("login.jsp").forward(request, response);
-				}
-				%>
 			</tbody>
 			</table> 
 			</div>
-</body>
+			<div class="center">
+			<input type=button id="page1" style="align-items: center" class="button" onclick="previous()" value="<<">
+			<input type=button id="page2" style="align-items: center" class="button" type="button" onclick="next()" value=">>">
+			</div>
+			</div>
+			<div id="box" class = "alert">
+             Leads per page must be less than 16
+             <center><button id = "close" class="button">OK</button></center>
+             </div>
+             </div>
 <script>
 window.onload=function(){
-	defaultPage();
+	pagination();
 }
 </script>
+</body>
 </html>

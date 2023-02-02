@@ -4,7 +4,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  overflow:auto;
+  overflow-x: hidden;
 }
 body{
   margin: 0;
@@ -32,7 +32,7 @@ body{
 .pagination a:hover:not(.active) {background-color: #ddd;}
 
 .center{
-  position: fixed;
+  position:relative;
   left: 40%;
 }
 .myDiv {
@@ -41,13 +41,16 @@ body{
  }
  .fixTableHead {
       overflow-y: auto;
-      height: 110px;
- }
- .fixTableHead thead th {
-	position: sticky;
-    top: 0;
-}
+      height: 500px;
+    }
+    .fixTableHead thead {
+      background:#2691d9;
+      color:White;
+      position: sticky;
+      top: 0;
+    }
 table {
+  background: white;
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
@@ -56,10 +59,6 @@ table {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
-  }
-  tbody{
-  height: 150px;
-  overflow: auto;
   }
   .form-popup {
   display: none;
@@ -106,8 +105,18 @@ table {
 .form-container .cancel {
   background-color:black;
 }
-
-  .button{
+.alert{
+   display: none;
+   position: fixed;
+   right: 600;
+   top:0;
+   border: 3px solid #f1f1f1;
+   z-index: 9;
+   max-width: 300px;
+   padding: 10px;
+   background-color: white;
+}
+   .button{
     background-color: White;
     color:black;
     padding: 12px 28px;

@@ -27,7 +27,7 @@ margin-left: auto;  ;size:8;width=90%">
 			</form>
 			<button class="button" onclick="openForm()" >Add New Lead</button>
 			<button class="button" onclick="window.location.href ='/Leads_Management/AllLeadsView.jsp'" >All leads</button>
-			<div class="center" style="position:fixed" >
+			<div class="center">
 			<label for="no"><b>Leads per page</b></label>
    			<input style="text-align:center" type="text" pattern="[0-9]{2}" value=5 onkeyup="pagination()" name="no" id="no" required>
    			</div>
@@ -73,10 +73,10 @@ margin-left: auto;  ;size:8;width=90%">
 						request.getRequestDispatcher("login.jsp").forward(request, response);
 					}
 			%>
-			<div style="background: white;">
-			<table id="myTable" class="fixTableHead">
-				<thead style="background:#2691d9;">
-					<tr style="color:White">
+			<div class="fixTableHead">
+			<table id="myTable">
+				<thead>
+					<tr>
 						<th>ID</th>
 						<th>Name</th>
 						<th>Email</th>
@@ -124,6 +124,10 @@ margin-left: auto;  ;size:8;width=90%">
     					<button id="close2" type="button" class="btn cancel" onclick="closeEditForm()">Close</button>
 						</form>  
 						</div>
+						<div id = "box" class="alert">
+                        Leads per page must be less than 16
+                        <center><button id = "close" class="button">OK</button></center>
+                        </div>
 						</div>
 			<script>			
 window.onload=function(){
