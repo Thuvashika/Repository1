@@ -108,7 +108,7 @@ table {
 .alert{
    display: none;
    position: fixed;
-   right: 600;
+   right: 600px;
    top:0;
    border: 3px solid #f1f1f1;
    z-index: 9;

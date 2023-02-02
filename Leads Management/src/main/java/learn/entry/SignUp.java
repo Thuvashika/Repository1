@@ -25,8 +25,8 @@ public class SignUp extends HttpServlet {
 			}
 			else {
 				controlObj.insertUser(obj);
-				controlObj.setId(obj);
-				session.setAttribute("Id",obj.getId());
+				int userId=controlObj.selectUserByEmail(email);
+				session.setAttribute("Id",userId);
 				response.sendRedirect("LeadsView.jsp");
 			}
 	}

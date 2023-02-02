@@ -50,7 +50,6 @@ public class LeadsControl {
 			preparedStatement.executeUpdate();
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -69,7 +68,6 @@ public class LeadsControl {
 			updationStatus=preparedStatement.executeUpdate()>1;
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return updationStatus;
@@ -92,7 +90,6 @@ public class LeadsControl {
 			}
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return lead;
@@ -146,7 +143,6 @@ public class LeadsControl {
 					lead.add(new Lead(userId,id,name,newEmail,region,contact));
 				}
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return lead;
@@ -167,7 +163,6 @@ public class LeadsControl {
 					lead.add(new Lead(userId,id,newName,email,region,contact));
 				}
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return lead;
@@ -187,7 +182,6 @@ public class LeadsControl {
 					lead.add(new Lead(userId,id,name,email,region,contact));
 				}
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return lead;
@@ -207,7 +201,6 @@ public class LeadsControl {
 					lead.add(new Lead(userId,id,name,email,region,contact));
 				}
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return lead;
@@ -228,7 +221,6 @@ public class LeadsControl {
 					lead.add(new Lead(userId,id,name,email,newRegion,contact));
 				}
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return lead;
@@ -249,7 +241,6 @@ public class LeadsControl {
 					lead.add(new Lead(userId,id,name,email,region,newContact));
 				}
 		}catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return lead;
@@ -270,7 +261,6 @@ public LinkedList<Lead> selectLeadsByEmail(int userId,String email){
 				lead.add(new Lead(id,name,newEmail,region,contact));
 			}
 	}catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	return lead;
@@ -291,7 +281,6 @@ public LinkedList<Lead> selectLeadsByName(int userId,String name){
 				lead.add(new Lead(id,newName,email,region,contact));
 			}
 	}catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	return lead;
@@ -311,7 +300,6 @@ public LinkedList<Lead> selectLeadsById(int userId,int id){
 				lead.add(new Lead(id,name,email,region,contact));
 			}
 	}catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	return lead;
@@ -332,7 +320,6 @@ public LinkedList<Lead> selectLeadsByRegion(int userId,String region){
 				lead.add(new Lead(id,name,email,newRegion,contact));
 			}
 	}catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	return lead;
@@ -353,7 +340,6 @@ public LinkedList<Lead> selectLeadsByContact(int userId,String contact){
 				lead.add(new Lead(id,name,email,region,newContact));
 			}
 	}catch (Exception e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	return lead;

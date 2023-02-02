@@ -10,21 +10,22 @@
       <h1>Sign in</h1>
       <form action="signup" method="post">
         <div class="txt_field">
-          <input type="text" pattern="[A-Za-z]{2,15}" required name="name">
-          <span></span>
+          <input type="text" pattern="[A-Za-z]{2,15}" required name="name"oninvalid="this.setCustomValidity('Only words with 2 to 15 alphabets are allowed')"
+   			onchange="try{setCustomValidity('')}catch(e){}">
           <label>Name</label>
         </div>
         <div class="txt_field">
           <input type="email" required name="email">
-          <span></span>
           <label>Email Id</label>
         </div>
         <div class="txt_field">
           <input type="password" required name="password">
-          <span></span>
           <label>Set Password</label>
         </div>
           <input type="submit" value="Create New Account">
+          <div class="signup_link">
+          Existing user: <a href="login.jsp" target="_self">Login</a>
+        </div>
          </form>
     </div>
 </body>

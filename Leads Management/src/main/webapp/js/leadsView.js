@@ -37,6 +37,9 @@
 				var len=products.length;
 				if(len==0){
 					page--;
+					if(page<0){
+						page=0;
+					}
 				}
 				else{
 					for(var i = 0; i < len; i++) {

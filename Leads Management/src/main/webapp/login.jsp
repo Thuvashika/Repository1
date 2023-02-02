@@ -18,7 +18,6 @@
         </div>
         <div class="txt_field">
           <input type="password" required name="password">
-          <span></span>
           <label>Password</label>
         </div>
         <%String error= (String)request.getAttribute("error");
