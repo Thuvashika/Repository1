@@ -1,0 +1,129 @@
+@charset "UTF-8";
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+body{
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(120deg,#2980b9, #8e44ad);
+  height: 100vh;
+}
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+  background-color: black;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.center{
+  position:relative;
+  left: 40%;
+}
+.myDiv {
+	height:60px;
+    text-align: center;
+ }
+ .fixTableHead {
+      overflow-y: auto;
+      height: 500px;
+    }
+    .fixTableHead thead {
+      background:#2691d9;
+      color:White;
+      position: sticky;
+      top: 0;
+    }
+table {
+  background: white;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+  td, th{
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  }
+  .form-popup {
+  display: none;
+  position: fixed;
+  top:0;
+  right: 600;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=tel], .form-container input[type=email] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=tel]:focus, .form-container input[type=email]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color:#2691d9;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color:black;
+}
+.alert{
+   display: none;
+   position: fixed;
+   right: 600px;
+   top:0;
+   border: 3px solid #f1f1f1;
+   z-index: 9;
+   max-width: 300px;
+   padding: 10px;
+   background-color: white;
+}
+   .button{
+    background-color: White;
+    color:black;
+    padding: 12px 28px;
+    text-align: center;
+    border-radius: 12px;
+    }
+    .button:hover {
+    background-color:Gray;
+    color: white;
+    }

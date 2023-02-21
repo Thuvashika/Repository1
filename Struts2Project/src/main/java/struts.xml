@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+	<struts>
+		<package name="Operations" extends="struts-default, json-default">
+			<action name="LoginAction" class="actions.EntryAction" method="executeLogin">
+				<result name="success">/LeadsView.jsp</result>
+				<result name="input">/Login.jsp</result>
+			</action>
+			<action name="SignUpAction" class="actions.EntryAction" method="executeSignUp">
+				<result name="success">/LeadsView.jsp</result>
+				<result name="input">/Login.jsp</result>
+			</action>
+			<action name="Logout" class="actions.EntryAction" method="executeLogout">
+				<result name="success">/Login.jsp</result>
+			</action>
+			<action name="records" class="actions.LeadsAction" method="records">
+				<result name= "success" type="json">/LeadsView.jsp</result>
+				<result name="login">/Login.jsp</result>
+			</action>
+			<action name="add" class="actions.LeadsAction" method="add">
+				<result name= "success">/LeadsView.jsp</result>
+			</action>
+			<action name="edit" class="actions.LeadsAction" method="edit">
+				<result name= "success">/LeadsView.jsp</result>
+			</action>
+			<action name="delete" class="actions.LeadsAction" method="delete">
+				<result name= "success">/LeadsView.jsp</result>
+			</action>
+			<action name="search" class="actions.LeadsAction" method="search">
+				<result name= "success" type="json">/LeadsView.jsp</result>
+			</action>
+			<action name="allLeads" class="actions.LeadsAction" method="allRecords">
+				<result name= "success" type="json">/AllLeadsView.jsp</result>
+				<result name="login">/Login.jsp</result>
+			</action>
+			<action name="searchall" class="actions.LeadsAction" method="searchAll">
+				<result name= "success" type="json">/AllLeadsView.jsp</result>
+			</action>
+		</package>
+	</struts>
